@@ -78,7 +78,7 @@ CurrentFields := [], GameArray := {}
  FileMove, .\Data\commodore128.xml, .\Data\Commodore 128.xml
  FileMove, .\Data\commodore16plus4.xml, .\Data\Commodore 16 Plus4.xml
  FileMove, .\Data\commodore64.xml, .\Data\Commodore 64.xml
- FileMove, .\Data\commodorepetcbm.xml, .\Data\Commodoe Pet – CBM.xml
+ FileMove, .\Data\commodorepetcbm.xml, .\Data\Commodoe Pet - CBM.xml
  FileMove, .\Data\digiblast.xml, .\Data\DigiBlast.xml
  FileMove, .\Data\doja.xml, .\Data\Doja.xml
  FileMove, .\Data\dos.xml, .\Data\DOS.xml

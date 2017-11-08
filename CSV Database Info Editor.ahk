@@ -8,41 +8,41 @@ Gui, Dialog:Add, Combobox, vGameLink
 Gui, Dialog:Add, Button, Default gDialogProceed, Continue
  
 ; Predefined values ----------------------------------------------------------------------------------------------------------------
-GuiTitle := "Game Info Editor"         ; main Gui title
-FileDir := A_ScriptDir . "\CSVFILES"   ; path of the folder containing the files
-;FileDir := "C:\Users\"A_UserName "\Google Drive\Csv Files"   ; path of the folder containing the files for google drive
+GuiTitle := "Game Info Editor" ; main Gui title
+FileDir := A_ScriptDir . "\CSVFILES" ; path of the folder containing the files
+;FileDir := "C:\Users\"A_UserName "\Google Drive\Csv Files" ; path of the folder containing the files for google drive
 DataDir := ".\Data"
 FileEncoding, UTF-8
-Separator := ">"                       ; field separator
-NumOfFields := 10                      ; number of fields in the game records
-FieldNames  := ["Rom Name"             ; array of field names for the game record, adjust them to your needs
-              , "Game Name"
-              , "Year"
-              , "Rating"
-              , "Publisher"
-              , "Developer"
-              , "Genre"
-              , "Score"
-              , "Number Of Players"
-              , "Description"]
-FieldOptions := ["Disabled"            ; special Gui options for the edit fields, adjust them to your needs
-               , ""
-               , ""
-               , ""
-               , ""
-               , ""
-               , ""
-               , ""
-               , ""
-               , "r10"
-               , ""
-               , ""]
+Separator := ">" ; field separator
+NumOfFields := 10 ; number of fields in the game records
+FieldNames := ["Rom Name" ; array of field names for the game record, adjust them to your needs
+ , "Game Name"
+ , "Year"
+ , "Rating"
+ , "Publisher"
+ , "Developer"
+ , "Genre"
+ , "Score"
+ , "Number Of Players"
+ , "Description"]
+FieldOptions := ["Disabled" ; special Gui options for the edit fields, adjust them to your needs
+ , ""
+ , ""
+ , ""
+ , ""
+ , ""
+ , ""
+ , ""
+ , ""
+ , "r10"
+ , ""
+ , ""]
  
-LVW := 300                       ; width of the ListView controls
-EDW := 500                       ; width of the Edit controls
+LVW := 300 ; width of the ListView controls
+EDW := 500 ; width of the Edit controls
  
 CurrentFields := [], GameArray := {}
-  FileMove, .\Data\acorn32bit.xml, .\Data\Acorn 32Bit.xml
+ FileMove, .\Data\acorn32bit.xml, .\Data\Acorn 32Bit.xml
  FileMove, .\Data\alice3290.xml, .\Data\Alice 32-90.xml
  FileMove, .\Data\amiga.xml, .\Data\Commodore Amiga.xml
  FileMove, .\Data\amigacd32.xml, .\Data\Commodore Amiga CD32.xml
@@ -56,7 +56,7 @@ CurrentFields := [], GameArray := {}
  FileMove, .\Data\atari2600.xml, .\Data\Atari 2600.xml
  FileMove, .\Data\atari5200.xml, .\Data\Atari 5200.xml
  FileMove, .\Data\atari7800.xml, .\Data\Atari 7800.xml
- FileMove, .\Data\atari8bit.xml, .\Data\Atari  8-Bit.xml
+ FileMove, .\Data\atari8bit.xml, .\Data\Atari 8-Bit.xml
  FileMove, .\Data\atarist.xml, .\Data\Atari ST.xml
  FileMove, .\Data\atom.xml, .\Data\Acorn Atom.xml
  FileMove, .\Data\bada.xml, .\Data\Bada.xml
@@ -78,7 +78,7 @@ CurrentFields := [], GameArray := {}
  FileMove, .\Data\commodore128.xml, .\Data\Commodore 128.xml
  FileMove, .\Data\commodore16plus4.xml, .\Data\Commodore 16 Plus4.xml
  FileMove, .\Data\commodore64.xml, .\Data\Commodore 64.xml
- FileMove, .\Data\commodorepetcbm.xml, .\Data\Commodoe Pet – CBM.xml
+ FileMove, .\Data\commodorepetcbm.xml, .\Data\Commodoe Pet - CBM.xml
  FileMove, .\Data\digiblast.xml, .\Data\DigiBlast.xml
  FileMove, .\Data\doja.xml, .\Data\Doja.xml
  FileMove, .\Data\dos.xml, .\Data\DOS.xml
@@ -304,7 +304,7 @@ GuiClose:
 ; File LV label --------------------------------------------------------------------------------------------------------------------
 SubFileLV:
 	Gui, ListView, FileLV ; set the default ListView
-	if(A_GuiEvent = "DoubleClick") && (A_EventInfo) && (LV_GetNext() = A_EventInfo)  { ; double-click on an item
+	if(A_GuiEvent = "DoubleClick") && (A_EventInfo) && (LV_GetNext() = A_EventInfo) { ; double-click on an item
 		LV_GetText(CurrentFile, A_EventInfo)
  
 		PopulateGameLV(CurrentFile)
@@ -339,10 +339,10 @@ PopulateGameLV(FileName){
 	Loop, Parse, CurrentContent, `n, `r
 	{
 		If (A_LoopField) {
-			Fields := StrSplit(A_LoopField, Separator)   ; creates a real array of fields (AHK arrays start with index 1)
-			GameID := Fields[2]                          ; use the first field as the unique ID for the game
-			LV_Add("", GameID)                           ; add GameID
-			GameArray[GameID] := Fields                  ; use GameID as key for GameArray
+			Fields := StrSplit(A_LoopField, Separator) ; creates a real array of fields (AHK arrays start with index 1)
+			GameID := Fields[2] ; use the first field as the unique ID for the game
+			LV_Add("", GameID) ; add GameID
+			GameArray[GameID] := Fields ; use GameID as key for GameArray
 		}
 	}
 	Loop, 2 { ; adjust the column width
@@ -386,15 +386,15 @@ SubMobySysLV:
 			if(URL) {
 				SplitPath, URL, GameID
 				GameID := Format("{:T}", RegExReplace(GameID, "(_|-)+", " "))
-				LV_Add("", GameID)                          ; add GameID
-				MobyArray[GameID] := URL                  	; use GameID as key for MobyArray
+				LV_Add("", GameID) ; add GameID
+				MobyArray[GameID] := URL 	; use GameID as key for MobyArray
 			}
-	   }
-	   Loop, 2 ; adjust the column width
+	 }
+	 Loop, 2 ; adjust the column width
 			LV_ModifyCol(A_Index, "AutoHdr")
-	   GuiControl, +Redraw, MobyGameLV ; redraw the ListView
-	   GuiControl, Focus, MobyGameLV
-	   ;LV_Modify(1, "Select")
+	 GuiControl, +Redraw, MobyGameLV ; redraw the ListView
+	 GuiControl, Focus, MobyGameLV
+	 ;LV_Modify(1, "Select")
 	}
 Return
  

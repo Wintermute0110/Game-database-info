@@ -41,7 +41,7 @@ sed -i 's~\&~\&amp;~g' "$file_in"
 # ' with &apos;
 echo apos
 sed -i "s~'~\&apos;~g" "$file_in"
-#  with 
+# with 
 echo quotes
 sed -i 's~"~~g' "$file_in"
 # <br><br> with space
@@ -65,29 +65,29 @@ echo convert csv to xml
 
 echo '<?xml version="1.0"?>' > "$file_out"
 echo '<menu>' >> "$file_out"
-echo '  <header>' >> "$file_out"
-echo '    <listname>'${1%%.*}'</listname>' >> "$file_out"
-echo '    <lastlistupdate></lastlistupdate>' >> "$file_out"
-echo '    <listversion>test</listversion>' >> "$file_out"
-echo '    <exporterversion></exporterversion>' >> "$file_out"
-echo '  </header>' >> "$file_out"
+echo ' <header>' >> "$file_out"
+echo ' <listname>'${1%%.*}'</listname>' >> "$file_out"
+echo ' <lastlistupdate></lastlistupdate>' >> "$file_out"
+echo ' <listversion>test</listversion>' >> "$file_out"
+echo ' <exporterversion></exporterversion>' >> "$file_out"
+echo ' </header>' >> "$file_out"
 
 while IFS=$'>' read -r -a arry
 do
-  echo '  <game name="'${arry[0]}'">' >> "$file_out"
-  echo '    <description>'${arry[1]}'</description>' >> "$file_out"
-  echo '    <year>'${arry[2]}'</year>' >> "$file_out"
-  echo '    <rating>'${arry[3]}'</rating>' >> "$file_out"
-  echo '    <manufacturer>'${arry[4]}'</manufacturer>' >> "$file_out"
-  echo '    <dev>'${arry[5]}'</dev>' >> "$file_out"
-  echo '    <genre>'${arry[6]}'</genre>' >> "$file_out"
-  echo '    <score>'${arry[7]}'</score>' >> "$file_out"
-  echo '    <player>'${arry[8]}'</player>' >> "$file_out"
-  echo '    <story>'${arry[9]}'</story>' >> "$file_out"
-  echo '    <enabled>Yes</enabled>' >> "$file_out" #'${arry[10]}' just set to 'Yes'
-  echo '    <crc>'${arry[11]}'</crc>' >> "$file_out"
-  echo '    <cloneof>'${arry[12]}'</cloneof>' >> "$file_out"
-  echo '  </game>' >> "$file_out"
+ echo ' <game name="'${arry[0]}'">' >> "$file_out"
+ echo ' <description>'${arry[1]}'</description>' >> "$file_out"
+ echo ' <year>'${arry[2]}'</year>' >> "$file_out"
+ echo ' <rating>'${arry[3]}'</rating>' >> "$file_out"
+ echo ' <manufacturer>'${arry[4]}'</manufacturer>' >> "$file_out"
+ echo ' <dev>'${arry[5]}'</dev>' >> "$file_out"
+ echo ' <genre>'${arry[6]}'</genre>' >> "$file_out"
+ echo ' <score>'${arry[7]}'</score>' >> "$file_out"
+ echo ' <player>'${arry[8]}'</player>' >> "$file_out"
+ echo ' <story>'${arry[9]}'</story>' >> "$file_out"
+ echo ' <enabled>Yes</enabled>' >> "$file_out" #'${arry[10]}' just set to 'Yes'
+ echo ' <crc>'${arry[11]}'</crc>' >> "$file_out"
+ echo ' <cloneof>'${arry[12]}'</cloneof>' >> "$file_out"
+ echo ' </game>' >> "$file_out"
 done < "$file_in"
 echo '</menu>' >> "$file_out"
 

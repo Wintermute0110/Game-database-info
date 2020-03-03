@@ -1,8 +1,8 @@
 # Game-database-info #
 
-Game database info to be used in creation of xml files or kodi scraper files
+Game database info to be used in creation of xml files or kodi scraper files.
 
-## Pending information ##
+**IMPORTANT** This repository is read-only and must not be updated. Change the CSV files in [AEL-offline-scraper](https://github.com/Wintermute0110/AEL-offline-scraper).
 
 ## Data conversion ##
 Bash script to convert csv files to hyperspin style xml. To convert just one csv pass 
